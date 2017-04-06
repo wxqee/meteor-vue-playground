@@ -1,20 +1,19 @@
 <template>
   <div class="app">
-    <button @click="handleClick">Click me {{count}} times</button>
+    <simple-vue-example></simple-vue-example>
+    <hr>
+    <simple-meteor-vue-example></simple-meteor-vue-example>
   </div>
 </template>
 
 <script>
+import SimpleVueExample from './simple-vue-example.vue';
+import SimpleMeteorVueExample from './simple-meteor-vue-example.vue';
+
 export default {
-  data() {
-    return {
-      count: 0
-    };
-  },
-  methods: {
-    handleClick() {
-      this.count += 1;
-    }
+  components: {
+    'simple-vue-example': SimpleVueExample,
+    'simple-meteor-vue-example': SimpleMeteorVueExample
   }
 };
 </script>
