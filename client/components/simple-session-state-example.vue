@@ -1,7 +1,8 @@
 <template>
-  <div class="simple-meteor-vue-example">
-    <h3>simple-meteor-vue-example <small>Vue only component example</small></h3>
-    <button @click="handleClick">Click me {{count}} times</button>
+  <div class="simple-session-state-example">
+    <div class="main-content">
+      <md-button class="md-raised md-primary" @click.native="handleClick">Click me {{count}} times</md-button>
+    </div>
   </div>
 </template>
 

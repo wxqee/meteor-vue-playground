@@ -1,26 +1,28 @@
 <template>
   <div class="app">
-    <simple-vue-example></simple-vue-example>
-    <hr>
-    <simple-meteor-vue-example></simple-meteor-vue-example>
+    <md-tabs>
+      <md-tab id="simple-vue" md-label="Simple Vue">
+        <simple-vue-example></simple-vue-example>
+      </md-tab>
+      <md-tab id="simple-session-state" md-label="Session State">
+        <simple-session-state-example></simple-session-state-example>
+      </md-tab>
+    </md-tabs>
   </div>
 </template>
 
 <script>
 import SimpleVueExample from './simple-vue-example.vue';
-import SimpleMeteorVueExample from './simple-meteor-vue-example.vue';
+import SimpleSessionStateExample from './simple-session-state-example.vue';
 
 export default {
   components: {
     'simple-vue-example': SimpleVueExample,
-    'simple-meteor-vue-example': SimpleMeteorVueExample
+    'simple-session-state-example': SimpleSessionStateExample
   }
 };
 </script>
 
 <style>
-.app {
-  width: 100%;
-  background-color: #faa;
-}
+
 </style>

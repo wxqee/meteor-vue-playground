@@ -1,7 +1,8 @@
 <template>
   <div class="simple-vue-example">
-    <h3>simple-vue-example <small>Vue only component example</small></h3>
-    <button @click="handleClick">Click me {{count}} times</button>
+    <div class="main-content">
+      <md-button class="md-raised md-primary" @click.native="handleClick">Click me {{count}} times</md-button>
+    </div>
   </div>
 </template>
 

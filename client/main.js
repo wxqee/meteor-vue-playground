@@ -1,10 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import Vue from 'vue';
 import VueTracker from 'vue-meteor-tracker';
+import VueMaterial from 'vue-material';
+
+Vue.use(VueMaterial);
+Vue.use(VueTracker);
 
 import App from './components/App.vue';
-
-Vue.use(VueTracker);
 
 Meteor.startup(() => {
   new Vue({

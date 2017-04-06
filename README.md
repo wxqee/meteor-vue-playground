@@ -1,3 +1,13 @@
+## Browser supported
+
+Vue Material supports the latest version of all Browsers. This means:
+
+* Google Chrome 52+
+* Firefox 48+
+* Safari 9+
+* Opera 38+
+* Edge 12+
+* IE 11
 
 ## Run
 
