@@ -85,3 +85,38 @@ ESlint?
 ```shell
 meteor npm i -SD babel-eslint eslint eslint-config-standard eslint-plugin-html eslint-plugin-promise eslint-plugin-standard
 ```
+
+## FAQ
+
+# vue-material meteor build issue?
+
+**Issue**
+
+Install dependencies
+
+```shell
+meteor npm install
+meteor
+```
+
+Here errors during startup
+
+```text
+[HMR] Dev server listening on port 3003
+[ 'tag <circle> has no matching end tag.' ]  \
+
+Unable to resolve some modules:
+
+"autosize" in /Users/xiaoqiang/workspace/_meteor/meteor-vue2-todo/node_modules/vue-material/src/components/mdInputContainer/mdTextarea.vue (web.browser)
+"element.scrollintoviewifneeded-polyfill" in /Users/xiaoqiang/workspace/_meteor/meteor-vue2-todo/node_modules/vue-material/src/components/mdMenu/mdMenuItem.vue (web.browser)
+
+If you notice problems related to these missing modules, consider running:
+
+meteor npm install --save autosize element.scrollintoviewifneeded-polyfill
+```
+
+**fix**
+
+```shell
+meteor npm install --save autosize element.scrollintoviewifneeded-polyfill
+```
