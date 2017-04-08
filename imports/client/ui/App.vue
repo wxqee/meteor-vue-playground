@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import SimpleVueExample from './simple-vue-example.vue';
-import SimpleSessionStateExample from './simple-session-state-example.vue';
+import SimpleVueExample from './VueExample.vue';
+import SimpleSessionStateExample from './SessionStateExample.vue';
 
 export default {
   components: {

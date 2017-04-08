@@ -6,7 +6,7 @@ import VueMaterial from 'vue-material/dist/vue-material.debug.js';
 Vue.use(VueMaterial);
 Vue.use(VueTracker);
 
-import App from './components/App.vue';
+import App from '../imports/client/ui/App.vue';
 
 Meteor.startup(() => {
   new Vue({
