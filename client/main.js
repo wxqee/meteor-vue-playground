@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import Vue from 'vue';
 import VueTracker from 'vue-meteor-tracker';
 import VueMaterial from 'vue-material/dist/vue-material.debug.js';
+import 'vue-material/dist/vue-material.css';
 // Import the router factory
 import { RouterFactory, nativeScrollBehavior } from 'meteor/akryum:vue-router2';
 

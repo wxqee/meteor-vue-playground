@@ -22,3 +22,4 @@ static-html
 akryum:vue-component
 session
 akryum:vue-router2
+akryum:vue-stylus
