@@ -28,6 +28,8 @@ Meteor.methods({
     check(setChecked, Boolean);
 
     Todos.update({}, {$set: {checked: setChecked}}, true, true)
+  },
+  'todos.count'() {
+    return Todos.find().count();
   }
-
 });

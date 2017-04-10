@@ -8,20 +8,31 @@
 		  </md-input-container>
 	  </form>
 
-	  <md-table>
-		  <md-table-header>
-			  <md-table-row>
-				  <md-table-head>Checked</md-table-head>
-				  <md-table-head>Text</md-table-head>
-				  <md-table-head>Create At</md-table-head>
-				  <md-table-head>Actions</md-table-head>
-			  </md-table-row>
-		  </md-table-header>
+	  <md-table-card>
+		  <md-table>
+			  <md-table-header>
+				  <md-table-row>
+					  <md-table-head>Checked</md-table-head>
+					  <md-table-head>Text</md-table-head>
+					  <md-table-head>Create At</md-table-head>
+					  <md-table-head>Actions</md-table-head>
+				  </md-table-row>
+			  </md-table-header>
 
-		  <md-table-body>
-			  <todo-item v-for="todo in todos" :todo="todo" :key="todo._id"></todo-item>
-		  </md-table-body>
-	  </md-table>
+			  <md-table-body>
+				  <todo-item v-for="todo in todos" :todo="todo" :key="todo._id"></todo-item>
+			  </md-table-body>
+		  </md-table>
+
+		  <md-table-pagination
+				  :md-size="size"
+				  :md-total="total"
+				  :md-page="page"
+				  md-label="Rows"
+				  md-separator="of"
+				  :md-page-options="[5, 10, 25, 50]"
+				  @pagination="onPagination"></md-table-pagination>
+	  </md-table-card>
   </div>
 </template>
 
@@ -34,7 +45,10 @@ export default {
   data() {
     return {
       newTodo: '',
-	    allTodosChecked: false
+	    allTodosChecked: false,
+	    size: 5,
+	    page: 1,
+	    total: null,
     }
   },
 	components: {
@@ -42,12 +56,12 @@ export default {
 	},
   meteor: {
     subscribe: {
-      'todos': []
+      'todos'() {
+				return [this.page, this.size];
+      }
     },
 	  todos() {
-      return Todos.find({}, {
-        sort: {createdAt: -1}
-      })
+      return Todos.find({})
 	  }
   },
 	methods: {
@@ -55,10 +69,21 @@ export default {
 		  Meteor.call('todos.insert', this.newTodo);
 		  this.newTodo = '';
 		},
-//		handleToggleAll() {
-//		  this.allTodosChecked = !this.allTodosChecked;
-//		  Meteor.call('todos.toggleAll', this.allTodosChecked);
-//		}
+		onPagination({page, size}) {
+			console.log('onPagination page:', page, ', size:', size);
+			this.page = page;
+			this.size = size;
+			Meteor.call('todos.count', (err, res) => {
+			  console.log(res);
+			  this.total = res;
+			});
+		}
+	},
+	created() {
+		Meteor.call('todos.count', (err, res) => {
+			console.log(res);
+			this.total = res;
+		});
 	}
 };
 </script>
