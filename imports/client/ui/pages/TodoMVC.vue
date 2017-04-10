@@ -1,10 +1,12 @@
 <template>
   <div class="todo-mvc-app">
 
-	  <md-input-container md-inline>
-		  <label>Input New Todo</label>
-		  <md-input></md-input>
-	  </md-input-container>
+	  <form novalidate @submit.stop.prevent="saveNewTodo">
+		  <md-input-container md-inline>
+			  <label>Input New Todo</label>
+			  <md-input v-model="newTodo"></md-input>
+		  </md-input-container>
+	  </form>
 
 
 	  <md-table>
@@ -25,11 +27,15 @@
 
 <script>
 import {Todos} from '/imports/api/collections.js';
-window.Todos = Todos;
 
 import TodoItem from '/imports/client/ui/components/todos/TodoItem.vue';
 
 export default {
+  data() {
+    return {
+      newTodo: ''
+    }
+  },
 	components: {
 	  'todo-item': TodoItem
 	},
@@ -38,9 +44,17 @@ export default {
       'todos': []
     },
 	  todos() {
-      return Todos.find({})
+      return Todos.find({}, {
+        sort: {createdAt: -1}
+      })
 	  }
-  }
+  },
+	methods: {
+		saveNewTodo(e) {
+		  Meteor.call('todos.insert', this.newTodo);
+		  this.newTodo = '';
+		}
+	}
 };
 </script>
 
