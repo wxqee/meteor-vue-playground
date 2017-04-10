@@ -11,12 +11,12 @@ export default [
     children: [
       {
         path: 'session-state',
-        name: 'session-state',
+        name: 'session-state.example',
         component: '/imports/client/ui/pages/SessionStateExample.vue'
       },
       {
         path: 'vue',
-        name: 'vue',
+        name: 'vue.example',
         component: '/imports/client/ui/pages/VueExample.vue'
       }
     ]
