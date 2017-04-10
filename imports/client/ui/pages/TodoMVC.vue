@@ -8,13 +8,13 @@
 		  </md-input-container>
 	  </form>
 
-
 	  <md-table>
 		  <md-table-header>
 			  <md-table-row>
-				  <md-table-head>ID</md-table-head>
+				  <md-table-head>Checked</md-table-head>
 				  <md-table-head>Text</md-table-head>
 				  <md-table-head>Create At</md-table-head>
+				  <md-table-head>Actions</md-table-head>
 			  </md-table-row>
 		  </md-table-header>
 
@@ -33,7 +33,8 @@ import TodoItem from '/imports/client/ui/components/todos/TodoItem.vue';
 export default {
   data() {
     return {
-      newTodo: ''
+      newTodo: '',
+	    allTodosChecked: false
     }
   },
 	components: {
@@ -53,7 +54,11 @@ export default {
 		saveNewTodo(e) {
 		  Meteor.call('todos.insert', this.newTodo);
 		  this.newTodo = '';
-		}
+		},
+//		handleToggleAll() {
+//		  this.allTodosChecked = !this.allTodosChecked;
+//		  Meteor.call('todos.toggleAll', this.allTodosChecked);
+//		}
 	}
 };
 </script>

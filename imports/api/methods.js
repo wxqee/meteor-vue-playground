@@ -9,6 +9,7 @@ Meteor.methods({
 
     Todos.insert({
       text,
+      checked: false,
       createdAt: new Date()
     });
   },
@@ -23,5 +24,10 @@ Meteor.methods({
 
     Todos.update(id, { $set: { checked: setChecked } });
   },
+  'todos.toggleAll'(setChecked) {
+    check(setChecked, Boolean);
+
+    Todos.update({}, {$set: {checked: setChecked}}, true, true)
+  }
 
 });
