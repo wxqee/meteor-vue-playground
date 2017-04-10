@@ -9,7 +9,7 @@ import { RouterFactory, nativeScrollBehavior } from 'meteor/akryum:vue-router2';
 Vue.use(VueMaterial);
 Vue.use(VueTracker);
 
-import App from '../imports/client/ui/App.vue';
+import App from '../imports/client/ui/layouts/App.vue';
 
 // Create router instance
 const routerFactory = new RouterFactory({
