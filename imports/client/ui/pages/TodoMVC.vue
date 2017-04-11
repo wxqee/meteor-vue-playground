@@ -61,7 +61,7 @@ export default {
       }
     },
 	  todos() {
-      return Todos.find({})
+      return Todos.find({}, {sort: {createdAt: -1}})
 	  }
   },
 	methods: {

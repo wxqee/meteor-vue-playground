@@ -11,6 +11,6 @@ Meteor.publish('todos', (page, size) => {
   return Todos.find({}, {
     sort: {createdAt: -1},
     limit: size,
-    skip: page - 1
+    skip: (page - 1) * size
   });
 });
