@@ -24,6 +24,12 @@ Meteor.methods({
 
     Todos.update(id, { $set: { checked: setChecked } });
   },
+  'todos.setText'(id, text) {
+    check(id, String);
+    check(text, String);
+
+    Todos.update(id, { $set: { text: text } });
+  },
   'todos.toggleAll'(setChecked) {
     check(setChecked, Boolean);
 
