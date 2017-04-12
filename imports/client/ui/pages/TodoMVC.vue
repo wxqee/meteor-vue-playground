@@ -62,6 +62,8 @@
 	  <md-table-card v-else>
 			<p>No Data</p>
 	  </md-table-card>
+
+	  <div v-if="!$subReady.todos">Loading...</div>
   </div>
 </template>
 
