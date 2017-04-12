@@ -1,6 +1,5 @@
 <template>
   <div class="todo-mvc-app">
-
 	  <form novalidate @submit.stop.prevent="saveNewTodo">
 		  <md-input-container md-inline>
 			  <label>Input New Todo</label>
@@ -8,7 +7,33 @@
 		  </md-input-container>
 	  </form>
 
-	  <md-table-card>
+	  <md-table-card v-if="todos.length > 0">
+		  <md-toolbar>
+			  <h1 class="md-title">Todo Table</h1>
+
+			  <md-menu md-size="4">
+				  <md-button class="md-icon-button" md-menu-trigger>
+					  <md-icon>filter_list</md-icon>
+				  </md-button>
+
+				  <md-menu-content>
+					  <md-menu-item @click.native="toggleAll">
+						  <md-icon>update</md-icon>
+						  <span>Toggle All</span>
+					  </md-menu-item>
+
+					  <md-menu-item @click.native="removeAll">
+						  <md-icon>delete</md-icon>
+						  <span>Delete All</span>
+					  </md-menu-item>
+				  </md-menu-content>
+			  </md-menu>
+
+			  <md-button class="md-icon-button">
+				  <md-icon>search</md-icon>
+			  </md-button>
+		  </md-toolbar>
+
 		  <md-table>
 			  <md-table-header>
 				  <md-table-row>
@@ -33,6 +58,10 @@
 				  :md-page-options="[5, 10, 25, 50]"
 				  @pagination="onPagination"></md-table-pagination>
 	  </md-table-card>
+
+	  <md-table-card v-else>
+			<p>No Data</p>
+	  </md-table-card>
   </div>
 </template>
 
@@ -49,6 +78,7 @@ export default {
 	    size: 5,
 	    page: 1,
 	    total: null,
+	    isCheckedAll: false,
     }
   },
 	components: {
@@ -65,12 +95,18 @@ export default {
 	  }
   },
 	methods: {
+    toggleAll() {
+	    this.isCheckedAll = !this.isCheckedAll;
+	    Meteor.call('todos.toggleAll', this.isCheckedAll, this.todos.map(t => t._id));
+    },
+		removeAll() {
+      Meteor.call('todos.removeAll', this.todos.map(t => t._id));
+		},
 		saveNewTodo(e) {
 		  Meteor.call('todos.insert', this.newTodo);
 		  this.newTodo = '';
 		},
 		onPagination({page, size}) {
-			console.log('onPagination page:', page, ', size:', size);
 			this.page = page;
 			this.size = size;
 			Meteor.call('todos.count', (err, res) => {

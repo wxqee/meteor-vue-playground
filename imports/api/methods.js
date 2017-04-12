@@ -30,10 +30,24 @@ Meteor.methods({
 
     Todos.update(id, { $set: { text: text } });
   },
-  'todos.toggleAll'(setChecked) {
+  'todos.toggleAll'(setChecked, idList) {
     check(setChecked, Boolean);
+    check(idList, Array);
 
-    Todos.update({}, {$set: {checked: setChecked}}, true, true)
+    console.log('<>++< --- todos.toggleAll: ', setChecked, idList);
+
+    Todos.update(
+      {_id: {$in: idList}},
+      {$set: {checked: setChecked}},
+      {multi: true}
+    );
+  },
+  'todos.removeAll'(idList) {
+    check(idList, Array);
+
+    console.log('<>++< --- todos.removeAll: ', idList);
+
+    Todos.remove({_id: {$in: idList}});
   },
   'todos.count'() {
     return Todos.find().count();
