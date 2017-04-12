@@ -6,8 +6,6 @@ import {Todos} from './collections.js';
 // ));
 
 Meteor.publish('todos', (page, size) => {
-  console.log('<>++< ---------', 'size:', size, ', page:', page);
-
   return Todos.find({}, {
     sort: {createdAt: -1},
     limit: size,
