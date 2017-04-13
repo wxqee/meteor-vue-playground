@@ -4,10 +4,10 @@
 			<md-icon>link</md-icon> <a href="/">Todo App</a>
 		</md-list-item>
 		<md-list-item>
-			<md-icon>link</md-icon> <a href="/accounts/login">Accounts/Login</a>
+			<md-icon>link</md-icon> <a href="/login">Login</a>
 		</md-list-item>
 		<md-list-item>
-			<md-icon>link</md-icon> <a href="/accounts/register">Accounts/Register</a>
+			<md-icon>link</md-icon> <a href="/register">Register</a>
 		</md-list-item>
 		<md-list-item>
 			<md-icon>link</md-icon> <a href="/examples">Examples</a>

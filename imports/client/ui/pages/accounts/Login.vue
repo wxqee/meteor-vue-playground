@@ -35,9 +35,15 @@
 		    this.loading = true;
 
 			  Meteor.loginWithPassword(this.form.username, this.form.password, (err) => {
-			    alert(err);
+			    if (err) {
+				    alert(err);
+			    }
 
 				  this.loading = false;
+
+			    if (this.$route.query.returnUrl) {
+			      location.href = decodeURIComponent(this.$route.query.returnUrl);
+			    }
 			  });
 		  }
 		}
