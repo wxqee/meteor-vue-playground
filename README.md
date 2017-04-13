@@ -90,6 +90,47 @@ ESlint?
 meteor npm i -SD babel-eslint eslint eslint-config-standard eslint-plugin-html eslint-plugin-promise eslint-plugin-standard
 ```
 
+# Build bundle for production
+
+Ubuntu x86_64
+
+```shell
+# deploying to a Ubuntu linux server:
+npm install --production
+meteor build $HOME/build --architecture os.linux.x86_64
+```
+
+# Install bundle for production
+
+Upload bundle package
+
+```shell
+scp $HOME/build/meteor-vue-playground.tar.gz robin@192.168.10.81:~/
+```
+
+Deploy
+
+```shell
+# client node
+ssh robin@192.168.10.81
+
+# server node
+robin@192.168.10.81:/home/robin
+$ mkdir -p ~/deploy/meteor-vue-playground
+
+robin@192.168.10.81:/home/robin
+$ cd ~/deploy/meteor-vue-playground
+
+robin@192.168.10.81:/home/robin/deploy/meteor-vue-playground
+$ tar zxvf ~/meteor-vue-playground.tar.gz
+$ cd bundle/
+
+robin@192.168.10.81:/home/robin/deploy/meteor-vue-playground/bundle
+$ nvm use 4.6.2     # node v4.6.2 for Meteor 1.4.x
+$ (cd programs/server && npm install)
+$ MONGO_URL=mongodb://localhost:27017/meteor-vue-playground ROOT_URL=http://192.168.10.81:8000 PORT=8000 node main.js
+```
+
 ## FAQ
 
 # vue-material meteor build issue?
