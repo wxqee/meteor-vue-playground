@@ -162,6 +162,8 @@ meteor npm install --save autosize element.scrollintoviewifneeded-polyfill
 
 **fix**
 
+This issue is because Vue default preCompiler effects to node_modules, to avoid the files from it can fix this issue.
+
 ```shell
-meteor npm install --save autosize element.scrollintoviewifneeded-polyfill
+echo "node_modules/" >> .vueignore
 ```
