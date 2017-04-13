@@ -5,6 +5,23 @@ export default [
     component: '/imports/client/ui/pages/TodoMVC.vue'
   },
   {
+    path: '/accounts',
+    name: 'accounts',
+    component: '/imports/client/ui/pages/accounts/Login.vue',
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: '/imports/client/ui/pages/accounts/Login.vue'
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: '/imports/client/ui/pages/accounts/Register.vue'
+      },
+    ]
+  },
+  {
     path: '/examples',
     name: 'examples',
     component: '/imports/client/ui/pages/SessionStateExample.vue',

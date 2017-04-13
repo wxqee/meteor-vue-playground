@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
+import { Accounts } from 'meteor/accounts-base';
+
 import {Todos} from './collections.js';
 
 Meteor.methods({
@@ -51,5 +53,14 @@ Meteor.methods({
   },
   'todos.count'() {
     return Todos.find().count();
-  }
+  },
+  // 'accounts.createUser'({username, password}) {
+  //   check(username, String);
+  //   check(password, String);
+  //
+  //   Accounts.createUser({
+  //     username,
+  //     password,
+  //   });
+  // },
 });

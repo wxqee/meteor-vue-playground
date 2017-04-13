@@ -4,6 +4,12 @@
 			<md-icon>link</md-icon> <a href="/">Todo App</a>
 		</md-list-item>
 		<md-list-item>
+			<md-icon>link</md-icon> <a href="/accounts/login">Accounts/Login</a>
+		</md-list-item>
+		<md-list-item>
+			<md-icon>link</md-icon> <a href="/accounts/register">Accounts/Register</a>
+		</md-list-item>
+		<md-list-item>
 			<md-icon>link</md-icon> <a href="/examples">Examples</a>
 		</md-list-item>
 		<md-list-item>
