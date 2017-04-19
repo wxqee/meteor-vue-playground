@@ -12,6 +12,7 @@ Vue Material supports the latest version of all Browsers. This means:
 ## Refs
 
 * [Meteor collection](http://docs.meteor.com/api/collections.html) operations.
+* [Meteor alanning:roles](https://github.com/alanning/meteor-roles) a role based auth.
 
 ## Run
 
@@ -166,4 +167,14 @@ This issue is because Vue default preCompiler effects to node_modules, to avoid 
 
 ```shell
 echo "node_modules/" >> .vueignore
+```
+
+# How can I see the working role data?
+
+see from `meteor mongo` terminal, and you will get `roles` and `users` collection updated after meteor first time start up.
+
+```shell
+meteor mongo
+meteor:PRIMARY> db.roles.find()
+meteor:PRIMARY> db.users.find()
 ```

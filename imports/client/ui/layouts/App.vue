@@ -9,7 +9,7 @@
 			  <h2 class="md-title" style="flex: 1">My App</h2>
 
 			  <span v-if="user">
-				  <span class="md-body-1">{{user.username}}</span>
+				  <span class="md-body-1">{{user.profile.name}}</span>
 				  <md-button @click.native="logout">
 					  Logout
 				  </md-button>
